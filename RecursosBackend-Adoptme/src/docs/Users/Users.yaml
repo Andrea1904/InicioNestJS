@@ -1,0 +1,64 @@
+paths:
+  /api/users/:
+    get:
+      summary: Obtener información de todos los usuarios
+      tags:
+      - Users
+      responses:
+        "200":
+         description: Los usuarios ingresaron a la bd
+        "500":
+        description: No se pudeo conectar al servidor 
+        components:
+          schemas:
+            User:
+              type: object
+              properties: 
+                _id: 
+                  type: ObjectId
+                  description: Id del usuario
+                first_name:
+                  type: String
+                  description: Nombre del usuario
+              example: 
+              _id: ObjectId("642628f0c7fad63462914e1f")    
+              first_name: Andrea
+    put:
+      summary: Actualizacion de la información del usuarios
+      tags:
+        -Users
+      parameters:
+         name: uid
+         in: path
+         required: true
+         description: id del usuario que quiere borrar
+         schema:
+         $type: String
+      requestbody:
+        required: true
+        content:
+          application/json:
+          schema:
+          $ref: '#components/requestBodie/updateUser'
+  post:
+      summary: Actualizacion de la información del usuarios
+      tags:
+        -Users
+      parameters:
+         name: uid
+         in: path
+         required: true
+         description: id del usuario que quiere borrar
+         schema:
+         $type: String
+      requestbody:
+        required: true
+        content:
+          application/json:
+          schema:
+          $ref: '#components/requestBodie/updateUser'
+            
+
+
+  
+          
